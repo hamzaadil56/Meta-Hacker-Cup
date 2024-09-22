@@ -1,7 +1,11 @@
+outputs = []
+
+
 def solve_curling_game():
     T = int(input())  # Number of test cases
     for t in range(1, T + 1):
-        N, G = map(int, input().split())  # Number of stones and the goal position
+        # Number of stones and the goal position
+        N, G = map(int, input().split())
         stones = []
         for i in range(N):
             E = int(input())  # Energy of the i-th stone
@@ -28,13 +32,16 @@ def solve_curling_game():
 
         for pos, index in final_positions.items():
             distance = abs(pos - G)
-            if distance < closest_distance or (distance == closest_distance and index <                           closest_stone_index):
+            if distance < closest_distance or (distance == closest_distance and index < closest_stone_index):
                 closest_stone_index = index
                 closest_distance = distance
 
         # Output the result for this test case
-        print(f"Case #{t}: {closest_stone_index} {closest_distance}")
+        outputs.append(f"Case #{t}: {closest_stone_index} {closest_distance}")
 
 
 # Example usage:
 solve_curling_game()
+
+for output in outputs:
+    print(output)
